@@ -8,9 +8,8 @@ const languageSwitcher = document.getElementById('languageSwitcher');
 let currentPage = 1;
 let currentQuery = 'ai';
 const pageSize = 6;
-let currentLanguage = 'id'; // Bahasa default
+let currentLanguage = 'id';
 
-// Objek untuk menyimpan teks terjemahan
 const translations = {
     id: {
         headerTitle: "FindNews Hari Ini!",
@@ -67,7 +66,6 @@ function showError(message) {
 async function fetchNews(query, page, lang) {
     showLoading(true);
     try {
-        // Menambahkan parameter 'lang' ke URL fetch
         const response = await fetch(`/api/news?q=${encodeURIComponent(query)}&page=${page}&pageSize=${pageSize}&language=${lang}`);
         if (!response.ok) {
             const errorData = await response.json();
@@ -91,7 +89,6 @@ function renderNews(articles) {
     }
 
     newsGrid.innerHTML = articles.map(article => {
-        // --- PERUBAHAN DI SINI: Teks gambar pengganti dinamis ---
         const placeholderText = translations[currentLanguage].imagePlaceholder;
         const imageUrl = article.urlToImage || `https://placehold.co/600x400/EAEFF5/7895B2?text=${placeholderText}`;
         
@@ -170,18 +167,15 @@ languageSwitcher.addEventListener('click', (e) => {
         const selectedLang = e.target.dataset.lang;
         if (selectedLang !== currentLanguage) {
             currentLanguage = selectedLang;
-            // Update tampilan tombol
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             e.target.classList.add('active');
-            // Update teks UI
             updateUIText(currentLanguage);
-            // Fetch berita dengan bahasa baru
             fetchNews(currentQuery, currentPage, currentLanguage);
         }
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateUIText(currentLanguage); // Set teks awal
+    updateUIText(currentLanguage);
     fetchNews(currentQuery, currentPage, currentLanguage);
 });
