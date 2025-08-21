@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindNews</title>
+    <link rel="icon" href="/vercel.svg" />
+    <!-- Menggunakan font: Playfair Display (Serif) untuk judul & Inter (Sans-serif) untuk isi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./asset/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="newspaper-sheet">
+            <!-- Tombol Switch Bahasa -->
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-btn active" data-lang="id">ID</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <header>
+                <h1 id="headerTitle">FindNews</h1>
+                <p id="headerSubtitle">Edisi Terkini Perkembangan Kecerdasan Buatan</p>
+            </header>
+
+            <form class="search-form" id="searchForm">
+                <input type="text" id="searchInput" class="search-input" placeholder="Cari topik...">
+                <button type="submit" class="search-button" id="searchButton">Cari</button>
+            </form>
+
+            <div id="statusContainer"></div>
+            <div class="news-grid" id="newsGrid"></div>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <script src="./asset/js/main.js"></script>
+</body>
+</html>
