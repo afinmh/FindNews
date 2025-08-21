@@ -42,6 +42,7 @@ body {
     padding: 4px;
     cursor: pointer;
     border: 1px solid var(--border-color);
+    z-index: 2;
 }
 .lang-btn {
     padding: 6px 12px;
@@ -144,11 +145,16 @@ header p {
     border-bottom: 1px solid var(--border-color);
 }
 
-.news-grid > .news-item:last-child,
-.news-grid > .news-item:nth-last-child(2) {
-        /* Hapus border untuk 2 item terakhir di grid 2 kolom */
+.news-grid > .news-item:last-child {
     border-bottom: none;
 }
+
+@media (min-width: 800px) {
+    .news-grid > .news-item:nth-last-child(2) {
+        border-bottom: none;
+    }
+}
+
 
 .news-image {
     width: 100%;
@@ -185,7 +191,7 @@ header p {
     text-transform: uppercase;
 }
 
-/* --- PERUBAHAN DI SINI: Pagination yang Dipercantik --- */
+/* Pagination yang Dipercantik */
 .pagination {
     display: flex;
     justify-content: center;
@@ -227,4 +233,45 @@ header p {
     background-color: #f0f0f0;
     border-radius: 4px;
     font-weight: 500;
+}
+
+/* --- PERUBAHAN DI SINI: Tampilan Mobile --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .newspaper-sheet {
+        padding: 20px;
+    }
+
+    .language-switcher {
+        top: 10px;
+        right: 10px;
+    }
+    .lang-btn {
+        padding: 4px 10px;
+        font-size: 0.9rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+    header p {
+        font-size: 0.8rem;
+    }
+
+    .search-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .news-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
